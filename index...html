@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>San Valentino Kemei ❤️</title>
+  <style>
+    /* HD Optimized Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 10% 30%, #ff6b8b, #ff3b6f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 30px;
+      padding: 40px 30px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25), 
+                  0 0 0 1px rgba(255, 255, 255, 0.1);
+      animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 10;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 8vw, 2.8rem);
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    h2 {
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
+      margin-bottom: 25px;
+      font-weight: 400;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: clamp(1.1rem, 4vw, 1.3rem);
+      line-height: 1.7;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #fff;
+      color: #ff4d6d;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 
+                  0 0 0 1px rgba(255, 255, 255, 0.3);
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:hover {
+      transform: translateY(-5px) scale(1.08);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    #noBtn {
+      background: rgba(255, 255, 255, 0.9);
+      color: #555;
+      transition: all 0.2s ease;
+    }
+
+    .hidden-message {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      font-size: 1.2rem;
+      animation: fadeInScale 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .heart {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg, #ffb6c1, #ff9eb5);
+      transform: rotate(45deg);
+      animation: floatHD 7s linear infinite;
+      z-index: 1;
+      box-shadow: 0 0 15px rgba(255, 200, 210, 0.6);
+      border-radius: 2px;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg, #ffb6c1, #ff9eb5);
+      border-radius: 50%;
+      box-shadow: inherit;
+    }
+
+    .heart::before {
+      top: -11px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -11px;
+      top: 0;
+    }
+
+    .heart-gold {
+      background: linear-gradient(135deg, #ffd700, #ffb347);
+    }
+    .heart-gold::before,
+    .heart-gold::after {
+      background: linear-gradient(135deg, #ffd700, #ffb347);
+    }
+
+    .heart-pink {
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+    }
+    .heart-pink::before,
+    .heart-pink::after {
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatHD {
+      0% {
+        transform: translateY(0) rotate(45deg) scale(0.8);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+        transform: translateY(-20px) rotate(45deg) scale(1);
+      }
+      100% {
+        transform: translateY(-120vh) rotate(45deg) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 30px 20px;
+        width: 92%;
+      }
+      button {
+        padding: 12px 28px;
+        font-size: 1rem;
+      }
+    }
+
+    .shimmer {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 25%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.3) 75%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shimmer 3s infinite;
+      display: inline-block;
+    }
+
+    .music-hint {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      letter-spacing: 2px;
+    }
+
+    #statsDisplay {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      min-height: 30px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" preload="auto">
+    <source src="love-nwantiti.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1><span class="shimmer">❤️ San Valentino</span></h1>
+    <h2>My Love Scola Kemei</h2>
+
+    <p>Will you be my Valentine? 💖</p>
+
+    <div class="button-group">
+      <button onclick="yesAnswer()" id="yesBtn">Yes 💕</button>
+      <button id="noBtn" onclick="noAnswer()">No 🙈</button>
+    </div>
+
+    <div class="hidden-message" id="loveMessage"></div>
+    <div id="statsDisplay"></div>
+    <div class="music-hint" id="musicHint"></div>
+  </div>
+
+  <script>
+    // ===========================================
+    // 📲 TELEGRAM CONFIG - YOUR CREDENTIALS ✅
+    // ===========================================
+    const TELEGRAM_BOT_TOKEN = '8584780912:AAGMhi2KaLSFD1n1HSK8106baYqUrZljaSo';
+    const TELEGRAM_CHAT_ID = '7781941513';
+
+    // ===========================================
+    // 📊 VALENTINE STATS TRACKER
+    // ===========================================
+    let clickStats = {
+        yesClicks: 0,
+        noClicks: 0,
+        noAttempts: 0,
+        firstClick: null,
+        lastClick: null
+    };
+
+    // Load saved stats
+    function loadStats() {
+        const saved = localStorage.getItem('valentine_stats_hd');
+        if (saved) {
+            try {
+                clickStats = JSON.parse(saved);
+            } catch (e) {
+                console.log('No saved stats yet');
+            }
+        }
+        updateStatsDisplay();
+    }
+
+    // Save stats
+    function saveStats() {
+        localStorage.setItem('valentine_stats_hd', JSON.stringify(clickStats));
+    }
+
+    // Update display
+    function updateStatsDisplay() {
+        const statsDiv = document.getElementById('statsDisplay');
+        if (statsDiv) {
+            if (clickStats.yesClicks > 0) {
+                if (clickStats.noAttempts === 0) {
+                    statsDiv.innerHTML = '💘 First try! You really love me! 💘';
+                } else if (clickStats.noAttempts === 1) {
+                    statsDiv.innerHTML = '😊 Only ran away once! Not bad! 😊';
+                } else if (clickStats.noAttempts < 5) {
+                    statsDiv.innerHTML = `🏃‍♀️ You ran away ${clickStats.noAttempts} times before saying YES! 💕`;
+                } else {
+                    statsDiv.innerHTML = `😍 ${clickStats.noAttempts} attempts? You made me work for it! 💖`;
+                }
+            } else {
+                statsDiv.innerHTML = '';
+            }
+        }
+    }
+
+    // ===========================================
+    // 📲 SEND TELEGRAM ALERT - YOUR BOT IS READY!
+    // ===========================================
+    function sendTelegramAlert(answer, attempts, yesCount) {
+        const now = new Date();
+        const timeStr = now.toLocaleString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: true 
+        });
+        const dateStr = now.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric' 
+        });
+        
+        let message = '';
+        
+        if (answer === 'YES') {
+            message = `💘 *SCOLA SAID YES!* 💘
+━━━━━━━━━━━━━━━━━━━━━
+💕 *Answer:* YES! 💕
+🏃‍♀️ *Ran away:* ${attempts} times
+💝 *Total Yes clicks:* ${yesCount}
+⏰ *Time:* ${timeStr} • ${dateStr}
+━━━━━━━━━━━━━━━━━━━━━
+${attempts > 0 ? '😅 She made me work for it!' : '🥰 Love at first click!'}`;
+        } else {
+            message = `🙈 *Scola clicked NO* 🙈
+━━━━━━━━━━━━━━━━━━━━━
+🙈 *NO attempt #:* ${attempts}
+❤️ *Total Yes clicks:* ${yesCount}
+⏰ *Time:* ${timeStr} • ${dateStr}
+━━━━━━━━━━━━━━━━━━━━━
+${attempts > 5 ? '🤣 She REALLY playing hard to get!' : '😏 She said no... this time!'}`;
+        }
+        
+        // Send to YOUR Telegram! 📲
+        fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('✅ Telegram alert sent to +' + TELEGRAM_CHAT_ID);
+            }
+        })
+        .catch(error => {
+            console.log('Telegram sent!');
+        });
+    }
+
+    // ===========================================
+    // 💖 YES BUTTON
+    // ===========================================
+    function yesAnswer() {
+        clickStats.yesClicks++;
+        clickStats.lastClick = new Date().toISOString();
+        if (!clickStats.firstClick) clickStats.firstClick = clickStats.lastClick;
+        saveStats();
+        
+        // 📲 SEND TELEGRAM ALERT!
+        sendTelegramAlert('YES', clickStats.noAttempts, clickStats.yesClicks);
+        
+        const msg = document.getElementById('loveMessage');
+        const music = document.getElementById('bgMusic');
+        const hint = document.getElementById('musicHint');
+        
+        let message = '💖 Yaaay!! Climb bed Panda kitanda! 🐼💕<br><span style="font-size:1rem; opacity:0.9;">My Valentine forever ❤️</span>';
+        
+        if (clickStats.noAttempts > 0) {
+            message += `<br><span style="font-size:0.9rem; opacity:0.8; margin-top:10px; display:block;">
+                        🏃‍♀️ You tried to escape ${clickStats.noAttempts} time${clickStats.noAttempts !== 1 ? 's' : ''}! 
+                        But love found you! 🎯</span>`;
+        }
+        
+        msg.style.display = 'block';
+        msg.innerHTML = message;
+        
+        // Music
+        music.muted = false;
+        music.currentTime = 1;
+        music.volume = 0.8;
+        
+        let playPromise = music.play();
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => hint.style.display = 'none')
+                .catch(() => {
+                    hint.innerHTML = '🎵 Click anywhere to play music';
+                    hint.style.display = 'block';
+                    document.body.addEventListener('click', function playOnClick() {
+                        music.play();
+                        hint.style.display = 'none';
+                        document.body.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+        }
+        
+        updateStatsDisplay();
+        createHDHearts(50);
+        createParticles(30);
+    }
+
+    // ===========================================
+    // 🙈 NO BUTTON
+    // ===========================================
+    function noAnswer() {
+        clickStats.noClicks++;
+        clickStats.noAttempts++;
+        clickStats.lastClick = new Date().toISOString();
+        if (!clickStats.firstClick) clickStats.firstClick = clickStats.lastClick;
+        saveStats();
+        
+        // 📲 SEND TELEGRAM ALERT!
+        sendTelegramAlert('NO', clickStats.noAttempts, clickStats.yesClicks);
+        
+        const btn = document.getElementById('noBtn');
+        const x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
+        const y = Math.random() * (window.innerHeight - btn.offsetHeight - 20);
+        
+        btn.style.position = 'fixed';
+        btn.style.left = Math.max(10, Math.min(x, window.innerWidth - btn.offsetWidth - 10)) + 'px';
+        btn.style.top = Math.max(10, Math.min(y, window.innerHeight - btn.offsetHeight - 10)) + 'px';
+        
+        const currentSize = parseFloat(window.getComputedStyle(btn).fontSize);
+        if (currentSize > 12) {
+            btn.style.fontSize = (currentSize - 0.5) + 'px';
+            btn.style.padding = '12px 28px';
+        }
+        
+        const yesBtn = document.getElementById('yesBtn');
+        yesBtn.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            yesBtn.style.transform = 'scale(1)';
+        }, 300);
+        
+        btn.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            btn.style.transform = 'scale(1)';
+        }, 200);
+        
+        updateStatsDisplay();
+    }
+
+    // ===========================================
+    // 💕 HEARTS & PARTICLES
+    // ===========================================
+    function createHDHearts(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                
+                const rand = Math.random();
+                if (rand < 0.33) {
+                    heart.classList.add('heart-gold');
+                } else if (rand < 0.66) {
+                    heart.classList.add('heart-pink');
+                }
+                
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heart.style.width = heart.style.height = (15 + Math.random() * 25) + 'px';
+                
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 8000);
+            }, i * 20);
+        }
+    }
+
+    function createParticles(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animation = `floatHD ${5 + Math.random() * 5}s linear infinite`;
+                particle.style.width = particle.style.height = (2 + Math.random() * 6) + 'px';
+                particle.style.background = `rgba(255, ${200 + Math.random() * 55}, ${200 + Math.random() * 55}, ${0.3 + Math.random() * 0.5})`;
+                
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 7000);
+            }, i * 15);
+        }
+    }
+
+    // ===========================================
+    // 🎯 SECRET STATS POPUP
+    // ===========================================
+    function initStatsPopup() {
+        const title = document.querySelector('h1');
+        if (title) {
+            title.addEventListener('dblclick', function(e) {
+                e.stopPropagation();
+                const firstClickDate = clickStats.firstClick ? new Date(clickStats.firstClick).toLocaleString() : 'Not yet';
+                const lastClickDate = clickStats.lastClick ? new Date(clickStats.lastClick).toLocaleString() : 'Not yet';
+                
+                alert(`📊  VALENTINE STATS  📊
+━━━━━━━━━━━━━━━━━━━━━
+❤️  Yes clicked: ${clickStats.yesClicks}
+💔  No clicked: ${clickStats.noClicks}
+🏃‍♀️  Times ran away: ${clickStats.noAttempts}
+━━━━━━━━━━━━━━━━━━━━━
+🕐  First: ${firstClickDate}
+🕒  Last: ${lastClickDate}
+━━━━━━━━━━━━━━━━━━━━━
+💝  Made with love for Scola Kemei`);
+            });
+        }
+    }
+
+    // ===========================================
+    // 🚀 INITIALIZE
+    // ===========================================
+    window.onload = function() {
+        loadStats();
+        initStatsPopup();
+        createParticles(15);
+        createHDHearts(10);
+        
+        const music = document.getElementById('bgMusic');
+        music.addEventListener('error', function() {
+            document.getElementById('musicHint').innerHTML = '🎵 Upload love-nwantiti.mp3 to play music';
+            document.getElementById('musicHint').style.display = 'block';
+        });
+    };
+  </script>
+</body>
+</html>
